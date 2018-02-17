@@ -153,7 +153,10 @@
                 ws.send(JSON.stringify({ data: $("#numberfield").val() }));
             });
         });
-    </script>
+</script>
+<%= if (home && len(home.Content) > 0) { %>
+  <%= markdown(home.Content) %>
+<% } else { %>
 <header>
   <div class="container">
     <div class="row">
@@ -225,3 +228,4 @@
   </div>
 </div>
 <div class="foot"> <span> Powered by <a href="http://gobuffalo.io/">gobuffalo.io</a></span> </div>
+<% } %>

@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 10.1
--- Dumped by pg_dump version 10.1
+-- Dumped by pg_dump version 10.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -35,6 +35,23 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: pages; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pages (
+    id uuid NOT NULL,
+    title character varying(255) NOT NULL,
+    content text NOT NULL,
+    style character varying(255) NOT NULL,
+    slug character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE pages OWNER TO postgres;
+
+--
 -- Name: schema_migration; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -44,6 +61,21 @@ CREATE TABLE schema_migration (
 
 
 ALTER TABLE schema_migration OWNER TO postgres;
+
+--
+-- Name: pages pages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pages
+    ADD CONSTRAINT pages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pages_slug_idx; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX pages_slug_idx ON pages USING btree (slug);
+
 
 --
 -- Name: version_idx; Type: INDEX; Schema: public; Owner: postgres

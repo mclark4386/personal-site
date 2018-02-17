@@ -58,6 +58,7 @@ func App() *buffalo.App {
 		app.GET("/echo", EchoHandler)
 
 		app.ServeFiles("/assets", assetsBox)
+		app.Resource("/pages", PagesResource{})
 	}
 
 	return app

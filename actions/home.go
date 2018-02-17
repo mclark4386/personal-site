@@ -5,6 +5,8 @@ import (
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gorilla/websocket"
+	"github.com/markbates/pop"
+	"github.com/mclark4386/personal-site/models"
 )
 
 // HomeHandler is a default handler to serve up
@@ -18,6 +20,13 @@ func HomeHandler(c buffalo.Context) error {
 			go echo(conn)
 		}
 		return nil
+	}
+
+	if tx, ok := c.Value("tx").(*pop.Connection); ok {
+		home := &models.Page{}
+		if err := tx.Where("slug = ?", "home").First(home); err == nil {
+			c.Set("home", home)
+		}
 	}
 
 	return c.Render(200, r.HTML("index.html"))
