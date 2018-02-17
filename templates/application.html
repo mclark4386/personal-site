@@ -7,14 +7,15 @@
     <meta name="csrf-param" content="authenticity_token" />
     <meta name="csrf-token" content="<%= authenticity_token %>" />
     <link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
+    <%= javascriptTag("application.js") %>
 
     <div class="container">
       <%= partial("flash.html") %>
       <%= yield %>
     </div>
 
-    <%= javascriptTag("application.js") %>
   </body>
 </html>

@@ -10,7 +10,7 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
-	"github.com/mclark4386/personal_site/models"
+	"github.com/mclark4386/personal-site/models"
 )
 
 // ENV is used to help switch settings based on where the
@@ -55,6 +55,7 @@ func App() *buffalo.App {
 		app.Use(T.Middleware())
 
 		app.GET("/", HomeHandler)
+		app.GET("/echo", EchoHandler)
 
 		app.ServeFiles("/assets", assetsBox)
 	}
