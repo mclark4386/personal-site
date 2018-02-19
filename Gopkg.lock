@@ -17,7 +17,7 @@
   branch = "master"
   name = "github.com/cockroachdb/cockroach-go"
   packages = ["crdb"]
-  revision = "0d8b4682f140f0fe486ef7e3d2f70665f3066906"
+  revision = "59c0560478b705bf9bd12f9252224a0fad7c87df"
 
 [[projects]]
   name = "github.com/davecgh/go-spew"
@@ -40,8 +40,8 @@
 [[projects]]
   name = "github.com/fatih/color"
   packages = ["."]
-  revision = "570b54cabe6b8eb0bc2dfce68d964677d63b5260"
-  version = "v1.5.0"
+  revision = "507f6050b8568533fb3f5504de8e5205fa62a114"
+  version = "v1.6.0"
 
 [[projects]]
   name = "github.com/fatih/structs"
@@ -84,8 +84,8 @@
 [[projects]]
   name = "github.com/gobuffalo/packr"
   packages = ["."]
-  revision = "b3669dfbd647a0beb9854464c825f7838aba1866"
-  version = "v1.11.0"
+  revision = "6434a292ac52e6964adebfdce3f9ce6d9f16be01"
+  version = "v1.10.4"
 
 [[projects]]
   name = "github.com/gobuffalo/plush"
@@ -100,10 +100,10 @@
   version = "v3.6.10"
 
 [[projects]]
-  branch = "master"
   name = "github.com/gobuffalo/suite"
   packages = ["."]
-  revision = "985d7acf9588fa61c095bc5d357483e00e511ea3"
+  revision = "560c7accbc92c81d9e1ef59a5c3ca788f4a21bad"
+  version = "v1.0.0"
 
 [[projects]]
   name = "github.com/gobuffalo/tags"
@@ -173,7 +173,7 @@
     ".",
     "oid"
   ]
-  revision = "19c8e9ad00952ce0c64489b60e8df88bb16dd514"
+  revision = "88edab0803230a3898347e77b474f8c1820a1f20"
 
 [[projects]]
   branch = "master"
@@ -201,19 +201,20 @@
   branch = "master"
   name = "github.com/markbates/inflect"
   packages = ["."]
-  revision = "a12c3aec81a6a938bf584a4bac567afed9256586"
+  revision = "80fa1ea41b0dc859816314ab0b85f07a6bc57923"
 
 [[projects]]
   name = "github.com/markbates/pop"
   packages = [
     ".",
+    "associations",
     "columns",
     "fizz",
     "fizz/translators",
     "nulls"
   ]
-  revision = "8fe55efdc73bd3773a5872609d21d1d3829d1dbe"
-  version = "3.51.2"
+  revision = "c1692defc9d64a3a16f4731d8859dd4721b7fc90"
+  version = "3.60.3"
 
 [[projects]]
   name = "github.com/markbates/refresh"
@@ -231,19 +232,19 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
   name = "github.com/markbates/validate"
   packages = [
     ".",
     "validators"
   ]
   revision = "cd8cc34c703420d6b084fbbfd5085e8e71c5b830"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
   name = "github.com/markbates/willie"
   packages = ["."]
-  revision = "581acce3ce06dad9fab48638c21adadd0633631f"
+  revision = "1eede1f49c9648490dcabd7828c2f39b560e7040"
 
 [[projects]]
   branch = "master"
@@ -278,7 +279,7 @@
     "parser",
     "vm"
   ]
-  revision = "02ff8d4bfeacd39952eb7b8ccf7c0372d0fe4048"
+  revision = "d5441ca3f0c7e071a9ede864f9db2cc652690f42"
 
 [[projects]]
   name = "github.com/mattn/go-colorable"
@@ -349,9 +350,10 @@
   branch = "master"
   name = "github.com/russross/blackfriday"
   packages = ["."]
-  revision = "6d1ef893fcb01b4f50cb6e57ed7df3e2e627b6b2"
+  revision = "55d61fa8aa702f59229e6cff85793c22e580eaf5"
 
 [[projects]]
+  branch = "master"
   name = "github.com/satori/go.uuid"
   packages = ["."]
   revision = "36e9d2ebbde5e3f13ab2e25625fd453271d6522e"
@@ -446,8 +448,8 @@
     "require",
     "suite"
   ]
-  revision = "b91bfb9ebec76498946beb6af7c0230c7cc7ba6c"
-  version = "v1.2.0"
+  revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
+  version = "v1.2.1"
 
 [[projects]]
   branch = "master"
@@ -457,7 +459,7 @@
     "blowfish",
     "ssh/terminal"
   ]
-  revision = "1875d0a70c90e57f11972aefd42276df65e895b9"
+  revision = "650f4a345ab4e5b245a3034b110ebc7299e68186"
 
 [[projects]]
   branch = "master"
@@ -467,7 +469,7 @@
     "html",
     "html/atom"
   ]
-  revision = "0ed95abb35c445290478a5348a7b38bb154135fd"
+  revision = "cbe0f9307d0156177f9dd5dc85da1a31abc5f2fb"
 
 [[projects]]
   branch = "master"
@@ -482,7 +484,7 @@
     "unix",
     "windows"
   ]
-  revision = "ff2a66f350cefa5c93a634eadb5d25bb60c85a9c"
+  revision = "37707fdb30a5b38865cfb95e5aab41707daec7fd"
 
 [[projects]]
   branch = "v2"
@@ -493,6 +495,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9bb3dbf750ff05f81e5738aecd60c51c730ea9bbae7a51b1d4dc0deb27629062"
+  inputs-digest = "15f8932a99468b5c4bf9efa58217452142bd667bcb6b92555b930ffb707ecf6f"
   solver-name = "gps-cdcl"
   solver-version = 1
