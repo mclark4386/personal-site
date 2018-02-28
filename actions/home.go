@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/pop"
 	"github.com/gorilla/websocket"
-	"github.com/markbates/pop"
 	"github.com/mclark4386/personal-site/models"
 )
 

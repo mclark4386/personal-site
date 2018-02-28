@@ -2,7 +2,7 @@ package actions
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/markbates/pop"
+	"github.com/gobuffalo/pop"
 	"github.com/mclark4386/personal-site/models"
 	"github.com/pkg/errors"
 )
@@ -44,13 +44,10 @@ func (v PagesResource) List(c buffalo.Context) error {
 		return errors.WithStack(err)
 	}
 
-	// Make Pages available inside the html template
-	c.Set("pages", pages)
-
 	// Add the paginator to the context so it can be used in the template.
 	c.Set("pagination", q.Paginator)
 
-	return c.Render(200, r.HTML("pages/index.html"))
+	return c.Render(200, r.Auto(c, pages))
 }
 
 // Show gets the data for one Page. This function is mapped to
