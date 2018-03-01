@@ -63,14 +63,13 @@ func (v PagesResource) Show(c buffalo.Context) error {
 	page := &models.Page{}
 
 	// To find the Page the parameter page_id is used.
-	if err := tx.Find(page, c.Param("page_id")); err != nil {
-		return c.Error(404, err)
+	if err2 := tx.Where("slug = ?", c.Param("page_id")).First(page); err2 != nil {
+		if err := tx.Find(page, c.Param("page_id")); err != nil {
+			return c.Error(404, err)
+		}
 	}
 
-	// Make page available inside the html template
-	c.Set("page", page)
-
-	return c.Render(200, r.HTML("pages/show.html"))
+	return c.Render(200, r.Auto(c, page))
 }
 
 // New renders the form for creating a new Page.
