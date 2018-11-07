@@ -7,7 +7,6 @@ import (
 	csrf "github.com/gobuffalo/mw-csrf"
 	i18n "github.com/gobuffalo/mw-i18n"
 	paramlogger "github.com/gobuffalo/mw-paramlogger"
-
 	"github.com/gobuffalo/packr"
 	"github.com/mclark4386/personal-site/models"
 )
@@ -58,7 +57,17 @@ func App() *buffalo.App {
 		app.GET("/echo", EchoHandler)
 
 		app.ServeFiles("/assets", assetsBox)
-		app.Resource("/pages", PagesResource{})
+		app.Use(SetCurrentUser)
+		app.Use(Authorize)
+		app.GET("/users/new", UsersNew)
+		app.POST("/users", UsersCreate)
+		app.GET("/signin", AuthNew)
+		app.POST("/signin", AuthCreate)
+		app.DELETE("/signout", AuthDestroy)
+		app.Middleware.Skip(Authorize, HomeHandler, UsersNew, UsersCreate, AuthNew, AuthCreate)
+		pr := PagesResource{}
+		app.Middleware.Skip(Authorize, pr.Show)
+		app.Resource("/pages", pr)
 	}
 
 	return app
