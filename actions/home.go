@@ -13,12 +13,12 @@ import (
 // a home page.
 func HomeHandler(c buffalo.Context) error {
 	if websocket.IsWebSocketUpgrade(c.Request()) { //Are they asking for a websocket connection
-		conn, err := c.Websocket()
-		if err != nil {
-			fmt.Println("ERROR creating websocket connection:", err)
-		} else {
-			go echo(conn)
-		}
+		//		conn, err := c.Websocket()
+		//		if err != nil {
+		//			fmt.Println("ERROR creating websocket connection:", err)
+		//		} else {
+		//			go echo(conn)
+		//		}
 		return nil
 	}
 
@@ -33,12 +33,12 @@ func HomeHandler(c buffalo.Context) error {
 }
 
 func EchoHandler(c buffalo.Context) error {
-	conn, err := c.Websocket()
-	if err != nil {
-		fmt.Println("ERROR creating websocket connection:", err)
-	} else {
-		go echo(conn)
-	}
+	//	conn, err := c.Websocket()
+	//	if err != nil {
+	//		fmt.Println("ERROR creating websocket connection:", err)
+	//	} else {
+	//		go echo(conn)
+	//	}
 	return nil
 }
 
