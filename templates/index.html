@@ -124,15 +124,6 @@
       display: block;
     }
   }
-  .auth-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  .sign-in-btn{
-    margin-right: 10px;
-  }
 </style>
 
 <script type="text/javascript">
@@ -178,15 +169,6 @@
         <h2 class="source">
           Source found at <a href="https://github.com/mclark4386/personal-site"><i class="fa fa-github" aria-hidden="true"></i>https://github.com/mclark4386/personal-site</a>
         </h2>
-      </div>
-      <div class="auth-center col-md-1 pull-right">
-        <%= if (current_user) { %>
-          <h1><%= current_user.Email %></h1>
-          <a href="/signout" data-method="DELETE">Sign Out</a>
-        <% } else { %>
-          <a href="/signin" class="btn btn-primary">Sign In</a>
-          <a href="/users/new" class="btn btn-success">Register</a>
-        <% } %>
       </div>
     </div>
   </div>

@@ -1,13 +1,27 @@
 package actions
 
 import (
+	"strings"
+
+	"github.com/davecgh/go-spew/spew"
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop"
+	"github.com/gofrs/uuid"
 	"github.com/mclark4386/personal-site/models"
 	"github.com/pkg/errors"
 )
 
 func UsersNew(c buffalo.Context) error {
+	tx := c.Value("tx").(*pop.Connection)
+	config := models.SiteConfig{}
+	tx.Where("key = ?", "AllowNewUsers").First(&config)
+	if config.ID != uuid.Nil && strings.ToLower(config.Value) != "true" {
+		c.Flash().Add("danger", "You must be authorized to see that page")
+		return c.Redirect(302, "/")
+	} else {
+		spew.Printf("config:%+v\n", config)
+	}
+
 	u := models.User{}
 	c.Set("user", u)
 	return c.Render(200, r.HTML("users/new.html"))
@@ -15,12 +29,21 @@ func UsersNew(c buffalo.Context) error {
 
 // UsersCreate registers a new user with the application.
 func UsersCreate(c buffalo.Context) error {
+	tx := c.Value("tx").(*pop.Connection)
+	config := models.SiteConfig{}
+	tx.Where("key = ?", "AllowNewUsers").First(&config)
+	if config.ID != uuid.Nil && strings.ToLower(config.Value) != "true" {
+		c.Flash().Add("danger", "You must be authorized to see that page")
+		return c.Redirect(302, "/")
+	} else {
+		spew.Printf("config:%+v\n", config)
+	}
+
 	u := &models.User{}
 	if err := c.Bind(u); err != nil {
 		return errors.WithStack(err)
 	}
 
-	tx := c.Value("tx").(*pop.Connection)
 	verrs, err := u.Create(tx)
 	if err != nil {
 		return errors.WithStack(err)

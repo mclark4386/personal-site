@@ -1,0 +1,5 @@
+create_table("site_configs") {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("key", "string", {"unique": true})
+	t.Column("value", "string", {})
+}

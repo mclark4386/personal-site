@@ -68,6 +68,8 @@ func App() *buffalo.App {
 		pr := PagesResource{}
 		app.Middleware.Skip(Authorize, pr.Show)
 		app.Resource("/pages", pr)
+		app.GET("/admin/panel", AdminPanel)
+		app.POST("/admin/panel", SetSiteConfigs)
 	}
 
 	return app

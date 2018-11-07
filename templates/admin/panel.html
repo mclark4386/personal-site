@@ -1,0 +1,13 @@
+<h1>Admin Panel</h1>
+
+<h3>Site Configurations:</h3>
+<%= form({action:"/admin/panel", method: "POST"}) { %>
+<div class="row">
+  <label>
+    <input type="hidden" name="AllowNewUsers" value="false" />
+    <input class="" id="AllowNewUsers" name="AllowNewUsers" type="checkbox" value="true" <%= if (AllowNewUsers == "true") { %>checked=""<%}%>>
+    Allow New Users
+  </label>
+</div>
+<%= f.SubmitTag("Save") %>
+<% } %>
