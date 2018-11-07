@@ -14,7 +14,8 @@ You will also need to make sure that **you** start/install the database of your 
 
 Ok, so you've edited the "database.yml" file and started postgres, now Buffalo can create the databases in that file for you:
 
-	$ buffalo db create -a
+	$ buffalo pop create -a
+	$ buffalo pop m up
 ## Starting the Application
 
 Buffalo ships with a command that will watch your application and automatically rebuild the Go binary and any assets for you. To do that run the "buffalo dev" command:
