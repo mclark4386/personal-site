@@ -11,7 +11,7 @@ ADD yarn.lock .
 RUN yarn install --no-progress
 ADD . .
 RUN dep ensure
-RUN buffalo build --static -o /bin/app
+RUN buffalo build -d --static -o /bin/app
 
 FROM alpine
 RUN apk add --no-cache bash
