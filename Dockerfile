@@ -2,7 +2,7 @@
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 FROM gobuffalo/buffalo:development as builder
 
-RUN mkdir -p $GOPATH/src/github.com/mclark4386/personal-site && export GO111MODULE=on
+RUN mkdir -p $GOPATH/src/github.com/mclark4386/personal-site
 WORKDIR $GOPATH/src/github.com/mclark4386/personal-site
 
 # this will cache the npm install step, unless package.json changes
@@ -10,8 +10,8 @@ ADD package.json .
 ADD yarn.lock .
 RUN yarn install --no-progress
 ADD . .
-RUN go mod vendor
-RUN buffalo build -d --static -o /bin/app
+RUN GO111MODULE=on go mod vendor
+RUN GO111MODULE=on buffalo build -d --static -o /bin/app
 
 FROM alpine
 RUN apk add --no-cache bash
