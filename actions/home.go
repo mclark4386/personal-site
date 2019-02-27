@@ -12,15 +12,15 @@ import (
 // HomeHandler is a default handler to serve up
 // a home page.
 func HomeHandler(c buffalo.Context) error {
-	if websocket.IsWebSocketUpgrade(c.Request()) { //Are they asking for a websocket connection
-		//		conn, err := c.Websocket()
-		//		if err != nil {
-		//			fmt.Println("ERROR creating websocket connection:", err)
-		//		} else {
-		//			go echo(conn)
-		//		}
-		return nil
-	}
+	//	if websocket.IsWebSocketUpgrade(c.Request()) { //Are they asking for a websocket connection
+	//		conn, err := c.Websocket()
+	//		if err != nil {
+	//			fmt.Println("ERROR creating websocket connection:", err)
+	//		} else {
+	//			go echo(conn)
+	//		}
+	//		return nil
+	//	}
 
 	if tx, ok := c.Value("tx").(*pop.Connection); ok {
 		home := &models.Page{}

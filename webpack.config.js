@@ -17,13 +17,13 @@ const configurator = {
       ],
     }
 
-    Glob.sync("./assets/*/*.*").forEach((entry) => {
+    Glob.sync("./assets/**/*.*").forEach((entry) => {
       if (entry === './assets/css/application.scss') {
         return
       }
 
-      let key = entry.replace(/(\.\/assets\/(src|js|css|go)\/)|\.(ts|js|s[ac]ss|go)/g, '')
-      if(key.startsWith("_") || (/(ts|js|s[ac]ss|go)$/i).test(entry) == false) {
+      let key = entry.replace(/(\.\/assets\/(src|js|css|go)\/)|\.(ts|jsx?|s[ac]ss|go)/g, '')
+      if(key.startsWith("_") || (/(ts|jsx?|s[ac]ss|go)$/i).test(entry) == false) {
         return
       }
 
@@ -62,7 +62,7 @@ const configurator = {
           ]
         },
         { test: /\.tsx?$/, use: "ts-loader", exclude: /node_modules/},
-        { test: /\.jsx?$/,loader: "babel-loader",exclude: /node_modules/ },
+        { test: /\.jsx?$/,loader: "babel-loader",exclude: /node_modules/, query: { presets: [ '@babel/preset-react']} },
         { test: /\.(woff|woff2|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/,use: "url-loader"},
         { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,use: "file-loader" },
         { test: require.resolve("jquery"),use: "expose-loader?jQuery!expose-loader?$"},
